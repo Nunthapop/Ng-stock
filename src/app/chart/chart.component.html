@@ -1,0 +1,12 @@
+<span>
+<div class="box"> 
+<ejs-stockchart id="chart-container" [title]="title" [primaryXAxis]='primaryXAxis'[primaryYAxis]='primaryYAxis'  [crosshair]='crosshair'  [theme]='theme'>
+    <e-stockchart-series-collection>
+        <e-stockchart-series [dataSource]='chartData' type='Candle' xName='date' High='high' Low='low' Open='open' Close ='close' Name='Apple'></e-stockchart-series>
+    </e-stockchart-series-collection>
+  </ejs-stockchart>
+</div>
+</span>
+<ng-container  >
+
+
