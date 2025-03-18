@@ -11,7 +11,7 @@ import { MenubarModule } from 'primeng/menubar';
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true
-  
+
 })
 export class AppComponent {
   // constructor(private primeng: PrimeNG) {}
@@ -22,7 +22,7 @@ export class AppComponent {
     ngOnInit() {
       // this.primeng.ripple.set(true);
       this.items = [
-       
+
         {
           label: 'Home',
           icon: 'pi pi-home',
@@ -38,7 +38,12 @@ export class AppComponent {
           icon: 'pi pi-wallet',
           routerLink: '/'
         },
-      
+        {
+          label: 'News',
+          icon: 'pi pi-wallet',
+          routerLink: '/'
+        },
+
       ]
     }
 }
