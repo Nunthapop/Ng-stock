@@ -1,14 +1,40 @@
-<div class="grid">
-    <div class="col-6">
-        <div class="text-center p-3 border-round-sm  font-bold">6</div>
-    </div>
-    <div class="col-6">
-        <div class="text-center p-3 border-round-sm font-bold">6</div>
-    </div>
-    <div class="col-6">
-        <div class="text-center p-3 border-round-sm font-bold">6</div>
-    </div>
-    <div class="col-6">
-        <div class="text-center p-3 border-round-sm   font-bold">6</div>
-    </div>
+
+<div class="grid mt-3">
+    <div class="col-8  border-1 border-gray-300"><div class="flex  flex-column 
+        align-items-center 
+        justify-content-start 
+        m-8 border-solid 
+        border-2 border-500 p-4 
+        border-round-lg
+        flex-wrap">
+                
+        <p-table [value]="data" [tableStyle]="{ 'min-width': '50rem' }"  class="w-full">
+            <ng-template #caption>
+                <div class="flex items-center justify-between">
+                    <span class="text-xl font-bold">Recommend Stock</span>
+                </div>
+            </ng-template>
+            <ng-template #header>
+                
+                <tr>
+                    <th>Symbol</th>
+                    <th>Company Name</th>
+                    <th>Sector</th>
+                    <th>Recommendation</th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-data>
+                <tr>
+                    
+                    <td>{{ data.Symbol }}</td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.Sector }}</td>
+                    <td>{{ data.Recommendation }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+        
+        
+        </div></div>
+    <div class="col-4  border-1 border-gray-300">Div 2 content</div>
 </div>

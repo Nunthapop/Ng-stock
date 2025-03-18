@@ -6,12 +6,13 @@ import { AppComponent } from './app.component';
 // import { SharedModule } from './shared/shared.module';
 import { CandleSeriesService, ChartAllModule, DataLabelService, DateTimeService, LegendService, StockChartAllModule, TooltipService } from '@syncfusion/ej2-angular-charts';
 import { PrimeNG } from 'primeng/config';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
   ],
   imports: [
-   ChartAllModule, StockChartAllModule,AppComponent,
+   ChartAllModule, StockChartAllModule,AppComponent,TableModule
   ],
   providers: [
       DateTimeService,
