@@ -4,30 +4,41 @@ import { SharedModule } from '../../shared/shared.module';
 import {  OnInit } from '@angular/core';
 import { PolygonService } from '../../services/polygon.service';
 import { data } from '../../models/stock-data.model';
+import { OrderListModule } from 'primeng/orderlist';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
-  imports: [SharedModule],
+  imports: [SharedModule, OrderListModule,ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit{
   data: data[] = [];
-  
+  formGroup!: FormGroup;
     
-    constructor(private polygonService: PolygonService) {}
+  constructor(private fb: FormBuilder) { }
     
     ngOnInit(): void {
-     
-      this.data = [{
-        Symbol: 'AAPL',
-        name: 'Apple Inc.',
-        Sector: 'Stocks',
-        Recommendation: "Buy the Dip"
-      }
-        ];
+      this.formGroup = this.fb.group({
+        selectedStocks: [null], // Can set default value here if needed
+        text: '',
+      })
+      this.data = [
+        { Symbol: 'AAPL', price: '$192.53', volume: 48752630, Change: '+1.27%', total: 3022451890, category: 'Technology' },
+      { Symbol: 'MSFT', price: '$403.78', volume: 25631470, Change: '+0.89%', total: 2998710452, category: 'Technology' },
+      { Symbol: 'AMZN', price: '$178.75', volume: 30215689, Change: '-0.34%', total: 1845723615, category: 'Consumer Cyclical' },
+      { Symbol: 'GOOGL', price: '$156.37', volume: 18963254, Change: '+2.15%', total: 1963514782, category: 'Communication Services' },
+      { Symbol: 'TSLA', price: '$237.49', volume: 87456123, Change: '+3.62%', total: 7569451236, category: 'Consumer Cyclical' },
+      { Symbol: 'NVDA', price: '$950.02', volume: 45789632, Change: '+1.87%', total: 9782145693, category: 'Technology' },
+      { Symbol: 'META', price: '$474.99', volume: 32145698, Change: '+0.75%', total: 1236547895, category: 'Communication Services' },
+      { Symbol: 'JPM', price: '$196.56', volume: 12365478, Change: '-0.48%', total: 987456321, category: 'Financial Services' },
+      { Symbol: 'JNJ', price: '$152.28', volume: 8745632, Change: '-1.25%', total: 789562314, category: 'Healthcare' },
+      { Symbol: 'WMT', price: '$68.45', volume: 15236987, Change: '+0.95%', total: 1547896325, category: 'Consumer Defensive' }
+      ];
     }
+    
     
 }
 

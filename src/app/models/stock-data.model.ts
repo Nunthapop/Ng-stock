@@ -10,7 +10,9 @@ export interface StockData {
 }
 export interface data {
   Symbol: string;
-  name: string;
-  Sector: string;
-  Recommendation: string;
+  price: string;
+  volume: number;
+  Change: string;
+  total: number;
+  category: string
 }
