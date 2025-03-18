@@ -8,3 +8,9 @@ export interface StockData {
   close: number;
   volume: number;
 }
+export interface data {
+  Symbol: string;
+  name: string;
+  Sector: string;
+  Recommendation: string;
+}
