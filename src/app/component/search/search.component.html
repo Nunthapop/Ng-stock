@@ -1,0 +1,12 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="searchQuery">Search Stock Ticker:</label>
+    <input
+      id="searchQuery"
+      type="text"
+      formControlName="searchQuery"
+      placeholder="Enter stock ticker (e.g., AAPL)"
+    />
+  </div>
+  <button type="submit">Search</button>
+</form>

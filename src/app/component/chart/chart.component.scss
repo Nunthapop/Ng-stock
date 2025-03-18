@@ -1,0 +1,63 @@
+/* .ejs-stockchart{
+    margin: 10rem;
+} */
+
+.box{
+    margin: 3rem;
+    
+}
+ejs-stockchart{
+   margin: 1rem;
+
+}
+// src/app/component/search/search.component.scss
+:host {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s ease;
+  
+      &:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+      }
+    }
+  
+    button {
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+  
+      &:active {
+        background-color: #004080;
+      }
+    }
+  }

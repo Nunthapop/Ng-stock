@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { ChartComponent } from './chart/chart.component';
+import { ChartComponent } from './component/chart/chart.component';
 
 export const routes: Routes = [
 

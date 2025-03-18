@@ -3,10 +3,12 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { PrimeNG } from 'primeng/config';
 import { MenubarModule } from 'primeng/menubar';
+import { NavComponent } from './component/nav/nav.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink,MenubarModule],
+  imports: [RouterOutlet, RouterLink,MenubarModule,NavComponent,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,36 +16,7 @@ import { MenubarModule } from 'primeng/menubar';
 
 })
 export class AppComponent {
-  // constructor(private primeng: PrimeNG) {}
+  
 
 
-  title = 'chart';
-  items: MenuItem[] = [];
-    ngOnInit() {
-      // this.primeng.ripple.set(true);
-      this.items = [
-
-        {
-          label: 'Home',
-          icon: 'pi pi-home',
-          routerLink: '/'
-        },
-        {
-          label: 'Chart',
-          icon: 'pi pi-bitcoin',
-          routerLink: '/app-chart'
-        },
-        {
-          label: 'Wallet',
-          icon: 'pi pi-wallet',
-          routerLink: '/'
-        },
-        {
-          label: 'News',
-          icon: 'pi pi-wallet',
-          routerLink: '/'
-        },
-
-      ]
-    }
 }
