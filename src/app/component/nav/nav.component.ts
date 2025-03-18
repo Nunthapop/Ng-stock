@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
       {
         label: 'Home',
         icon: 'pi pi-home',
-        routerLink: '/',
+        routerLink: '/app-home',
       },
       {
         label: 'Chart',
@@ -32,12 +32,12 @@ export class NavComponent implements OnInit {
       {
         label: 'Wallet',
         icon: 'pi pi-wallet',
-        routerLink: '/',
+        routerLink: '/app-wallet',
       },
       {
         label: 'News',
         icon: 'pi pi-wallet',
-        routerLink: '/',
+        routerLink: '/app-news',
       },
     ];
   }
