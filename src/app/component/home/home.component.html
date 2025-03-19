@@ -36,30 +36,37 @@
                         <td>{{ data.Change }}</td>
                         <td>{{ data.total }}</td>
                         <td>{{ data.category }}</td>
-                        <td><button type="button" (click)="addToWhitelist(data)">Add</button></td>
+      
+                        <td><p-button type="button" (click)="addToWhitelist(data)" [disabled]="isInWhitelist(data)"
+                          styleClass="p-button-success" label="Add"/></td>
+                        
                     </tr>
                 </ng-template>
             </p-table>
         </form>
         </div></div>
-        <div class="col-4 border-1 border-gray-300">
-            Your whitelist
+        <div class="col-4 mt-3 ">
+        
             
-            <form [formGroup]="formGroup" class="card flex justify-center flex-column">         
-                <input type="text" pInputText formControlName="text" />
-                {{ formGroup.value  }}
-      
+            <form [formGroup]="formGroup" class="card flex justify-center flex-column border-1 
+            border-round-lg border-gray-300 p-4 mr-2">
+            <label  class="mb-3">search</label>         
+            <input type="text" pInputText formControlName="text"  placeholder="Search your whitelist"/>
+            {{ formGroup.value.text }}
+    
                 <p-table [value]="whitelist" [tableStyle]="{ 'min-width': '10rem' }" [scrollable]="true" scrollHeight="400px" class="w-full">
                     <ng-template #caption>
                       <div class="flex items-center justify-between">
                         <span class="text-xl font-bold">Your favorite</span>
                       </div>
                     </ng-template>
+                    
                     <ng-template #header>
                       <tr>
                         <th>Stock</th>
                         <th>Price</th>
                         <th>Change</th>
+                        <th>edit</th>
                       </tr>
                     </ng-template>
                     <ng-template #body let-data>
@@ -67,6 +74,7 @@
                         <td>{{ data.Symbol }}</td>
                         <td>{{ data.price }}</td>
                         <td>{{ data.Change }}</td>
+                        <td><button type="button" (click)="removeFromWhitelist(data)">Remove</button></td>
                       </tr>
                     </ng-template>
                   </p-table>

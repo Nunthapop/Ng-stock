@@ -6,13 +6,14 @@ import { OrderListModule } from 'primeng/orderlist';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ListboxModule } from 'primeng/listbox';
 import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   exports: [ // Export so other modules/components can use these
     ChartAllModule,
     StockChartAllModule,
     TableModule,
-    OrderListModule, ListboxModule,ReactiveFormsModule,InputTextModule
+    OrderListModule, ListboxModule,ReactiveFormsModule,InputTextModule,ButtonModule
   ],
   providers: [
     DateTimeService,

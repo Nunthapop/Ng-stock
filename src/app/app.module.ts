@@ -10,12 +10,14 @@ import { TableModule } from 'primeng/table';
 import { OrderListModule } from 'primeng/orderlist';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
   ],
   imports: [
-   ChartAllModule, StockChartAllModule,AppComponent,TableModule,OrderListModule,ReactiveFormsModule,CommonModule
+   ChartAllModule,ButtonModule,
+    StockChartAllModule,AppComponent,TableModule,OrderListModule,ReactiveFormsModule,CommonModule
   ],
   providers: [
       DateTimeService,

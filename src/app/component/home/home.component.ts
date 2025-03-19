@@ -50,12 +50,20 @@ export class HomeComponent implements OnInit{
       // Handle form submission
 
     }
-    addToWhitelist(stock: any): void {
-      this.whitelist.push(stock);
+    isInWhitelist(stock: any): boolean {
+      return this.whitelist.some(item => item.Symbol === stock.Symbol);
     }
-}
+    
+    addToWhitelist(stock: any): void {
+      if (!this.isInWhitelist(stock)) {
+        this.whitelist.push(stock);
+      }
+    }
+    removeFromWhitelist(stock: any): void {
+      this.whitelist = this.whitelist.filter(item => item.Symbol !== stock.Symbol);
+    }
 
-
+  }
 
 
 
