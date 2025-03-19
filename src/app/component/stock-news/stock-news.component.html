@@ -1,0 +1,17 @@
+<h2>Latest Stock News</h2>
+
+<!-- ตรวจสอบว่ามีข่าวหรือไม่ -->
+<div *ngIf="newsList && newsList.length > 0; else noNews">
+  <div *ngFor="let news of newsList">
+    <h3>{{ news.title }}</h3>
+    <img *ngIf="news.urlToImage" [src]="news.urlToImage" alt="News Image" width="200">
+    <p>{{ news.description }}</p>
+    <a [href]="news.url" target="_blank">Read more</a>
+    <hr />
+  </div>
+</div>
+
+<!-- ถ้าไม่มีข่าว -->
+<ng-template #noNews>
+  <p>No news available</p>
+</ng-template>

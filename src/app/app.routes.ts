@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { ChartComponent } from './component/chart/chart.component';
 import { HomeComponent } from './component/home/home.component';
-import { NewsComponent } from './component/news/news.component';
 import { WalletComponent } from './component/wallet/wallet.component';
+import { StockNewsComponent } from './component/stock-news/stock-news.component';
 
 export const routes: Routes = [
 
@@ -16,8 +16,8 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'app-news',
-        component: NewsComponent
+        path: 'app-stock-news',
+        component: StockNewsComponent
     }
     ,
     {
