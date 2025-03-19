@@ -16,15 +16,23 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class HomeComponent implements OnInit{
   data: data[] = [];
+  whitelist: data[] = [];
+  recommendForm!: FormGroup;
   formGroup!: FormGroup;
     
   constructor(private fb: FormBuilder) { }
     
     ngOnInit(): void {
+      this.recommendForm = this.fb.group({
+        // Define your form controls here
+      });
+
       this.formGroup = this.fb.group({
-        selectedStocks: [null], // Can set default value here if needed
-        text: '',
-      })
+        text: ['']
+      });
+     
+     
+
       this.data = [
         { Symbol: 'AAPL', price: '$192.53', volume: 48752630, Change: '+1.27%', total: 3022451890, category: 'Technology' },
       { Symbol: 'MSFT', price: '$403.78', volume: 25631470, Change: '+0.89%', total: 2998710452, category: 'Technology' },
@@ -38,8 +46,13 @@ export class HomeComponent implements OnInit{
       { Symbol: 'WMT', price: '$68.45', volume: 15236987, Change: '+0.95%', total: 1547896325, category: 'Consumer Defensive' }
       ];
     }
-    
-    
+    onSubmit(): void {
+      // Handle form submission
+
+    }
+    addToWhitelist(stock: any): void {
+      this.whitelist.push(stock);
+    }
 }
 
 
