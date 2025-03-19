@@ -1,83 +1,80 @@
+<div class="flex flex-column align-items-center
+justify-content-start  p-4  flex-wrap mt-2">
+<i class="pi pi-chart-line"  style="font-size: 3rem"></i>
+  <h1 class="font-bold">STOCK TRADING</h1>
+  <h3 class="font-light">Navigate financial markets with confidence through our intuitive platform, expert insights, and powerful trading tools designed for investors at every level.
 
-<div class="grid mt-3">
-    <div class="col-8  "><div class="flex  flex-column 
-        align-items-center 
-        justify-content-start 
-        m-3 border-solid 
-        border-1 border-300 p-4 
-        border-round-lg
-        flex-wrap">
-                
-        <form [formGroup]="recommendForm" (ngSubmit)="onSubmit() " class="w-full">
-            <p-table [value]="data" [tableStyle]="{ 'min-width': '50rem' }" 
-                     class="w-full" [paginator]="true"
-                     [rows]="5" [rowsPerPageOptions]="[5,10]">
-                <ng-template #caption>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold">Recommend Stock</span>
-                    </div>
-                </ng-template>
-                <ng-template #header>
-                    <tr>
-                        <th>Stock</th>
-                        <th>Price</th>
-                        <th>Volume</th>
-                        <th>Change</th>
-                        <th>Total</th>
-                        <th>Category</th>
-                        <th>Action</th>
-                    </tr>
-                </ng-template>
-                <ng-template #body let-data>
-                    <tr>
-                        <td>{{ data.Symbol }}</td>
-                        <td>{{ data.price }}</td>
-                        <td>{{ data.volume }}</td>
-                        <td>{{ data.Change }}</td>
-                        <td>{{ data.total }}</td>
-                        <td>{{ data.category }}</td>
-      
-                        <td><p-button type="button" (click)="addToWhitelist(data)" [disabled]="isInWhitelist(data)"
-                          styleClass="p-button-success" label="Add"/></td>
-                        
-                    </tr>
-                </ng-template>
-            </p-table>
-        </form>
-        </div></div>
-        <div class="col-4 mt-3 ">
-        
-            
-            <form [formGroup]="formGroup" class="card flex justify-center flex-column border-1 
-            border-round-lg border-gray-300 p-4 mr-2">
-            <label  class="mb-3">search</label>         
-            <input type="text" pInputText formControlName="text"  placeholder="Search your whitelist"/>
-            {{ formGroup.value.text }}
-    
-                <p-table [value]="whitelist" [tableStyle]="{ 'min-width': '10rem' }" [scrollable]="true" scrollHeight="400px" class="w-full">
-                    <ng-template #caption>
-                      <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold">Your favorite</span>
-                      </div>
-                    </ng-template>
-                    
-                    <ng-template #header>
-                      <tr>
-                        <th>Stock</th>
-                        <th>Price</th>
-                        <th>Change</th>
-                        <th>edit</th>
-                      </tr>
-                    </ng-template>
-                    <ng-template #body let-data>
-                      <tr>
-                        <td>{{ data.Symbol }}</td>
-                        <td>{{ data.price }}</td>
-                        <td>{{ data.Change }}</td>
-                        <td><button type="button" (click)="removeFromWhitelist(data)">Remove</button></td>
-                      </tr>
-                    </ng-template>
-                  </p-table>
-            </form>
+  </h3>
+</div>
+
+<div class="grid ">
+  <div class="col-8">
+    <div class="flex flex-column align-items-center justify-content-start m-3 border-solid border-1 border-300 p-4 border-round-lg flex-wrap">
+      <form [formGroup]="recommendForm" (ngSubmit)="onSubmit()" class="w-full">
+        <p-table [value]="(filteredData$ | async) || []" [tableStyle]="{ 'min-width': '50rem' }" class="w-full" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10]">
+          <ng-template #caption>
+            <div class="flex items-center justify-content-between align-items-center">
+              <span class="text-xl font-bold">Recommend Stock</span>
+              <span class="pl-8 input-icon-container">
+          <i class="pi pi-search mr-2 input-icon"></i>
+          <input type="text" pInputText formControlName="text" placeholder="Search your whitelist" class="input-with-icon"/>
+              </span>
+            </div>
+          </ng-template>
+          <ng-template #header>
+            <tr>
+              <th>Stock</th>
+              <th>Price</th>
+              <th>Volume</th>
+              <th>Change</th>
+              <th>Total</th>
+              <th>Category</th>
+              <th>Action</th>
+            </tr>
+          </ng-template>
+          <ng-template #body let-data>
+            <tr>
+              <td>{{ data.Symbol }}</td>
+              <td>{{ data.price }}</td>
+              <td>{{ data.volume }}</td>
+              <td>{{ data.Change }}</td>
+              <td>{{ data.total }}</td>
+              <td>{{ data.category }}</td>
+              <td>
+                <p-button type="button" (click)="addToWhitelist(data)" [disabled]="isInWhitelist(data)" styleClass="p-button-success" label="Add"></p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </form>
+    </div>
+  </div>
+  <div class="col-4 mt-3">
+    <form  class="card flex justify-center flex-column border-1 border-round-lg border-gray-300 p-4 mr-2 sticky top-0">
+      <p-table [value]="whitelist"  [tableStyle]="{ 'min-width': '10rem' }" [scrollable]="true" scrollHeight="400px" class="w-full">
+        <ng-template #caption>
+          <div class="flex items-center justify-between">
+            <span class="text-xl font-bold">Your favorite</span>
           </div>
+        </ng-template>
+        <ng-template #header>
+          <tr>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Change</th>
+            <th>edit</th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-data>
+          <tr>
+            <td>{{ data.Symbol }}</td>
+            <td>{{ data.price }}</td>
+            <td>{{ data.Change }}</td>
+
+            <td>  <p-button icon="pi pi-times" (click)="removeFromWhitelist(data)"severity="danger" /></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </form>
+  </div>
 </div>
