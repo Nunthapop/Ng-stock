@@ -11,13 +11,16 @@ import { OrderListModule } from 'primeng/orderlist';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { AsyncPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
   ],
   imports: [
    ChartAllModule,ButtonModule,
-    StockChartAllModule,AppComponent,TableModule,OrderListModule,ReactiveFormsModule,CommonModule
+    StockChartAllModule,AppComponent,
+    AsyncPipe,TableModule,OrderListModule,ReactiveFormsModule
+    ,CommonModule
   ],
   providers: [
       DateTimeService,
@@ -25,12 +28,12 @@ import { ButtonModule } from 'primeng/button';
       TooltipService,
       DataLabelService,
       CandleSeriesService,
-      CommonModule
+      CommonModule,AsyncPipe
     ],
   bootstrap: []
 })
-export class AppModule { 
- 
+export class AppModule {
+
 }
 
 
