@@ -15,16 +15,27 @@ import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms'; //
 export class WalletComponent {
   currencyData$!: Observable<any>;
   currencyForm: FormGroup;
+  convertedAmount: number | null = null;
+  exchangeRate: number | null = null;
 
   constructor(private currencyService: CurrencyService, private fb: FormBuilder) { // Inject FormBuilder
     this.currencyForm = this.fb.group({
       base: [''],
-      target: ['']
+      target: [''],
+      amount: ['']
     });
   }
 
-  getCurrency() {
-    const { base, target } = this.currencyForm.value;
+  onSubmit() {
+    const { base, target, amount } = this.currencyForm.value;
     this.currencyData$ = this.currencyService.getCurrency(base, target); // Use the service with form values
+    this.currencyData$.subscribe(currencyData => {
+      if (currencyData && currencyData.data && currencyData.data[target]) {
+        this.exchangeRate = currencyData.data[target].value;
+        if (amount !== null && this.exchangeRate !== null) {
+          this.convertedAmount = amount * this.exchangeRate; // Perform conversion after exchange rate is fetched
+        }
+      }
+    });
   }
 }

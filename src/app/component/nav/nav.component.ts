@@ -31,7 +31,7 @@ export class NavComponent implements OnInit {
       },
       {
         label: 'Exchange',
-        icon: 'pi pi-wallet',
+        icon: 'pi pi-arrow-right-arrow-left',
         routerLink: '/app-wallet',
       },
       {

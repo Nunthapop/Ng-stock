@@ -1,18 +1,28 @@
 <h1>Exchange Rate</h1>
+<p>300 limit request</p>
 
-<form [formGroup]="currencyForm" (ngSubmit)="getCurrency()">
+<form [formGroup]="currencyForm" (ngSubmit)="onSubmit()">
   <label for="base">Base Currency:</label>
   <input id="base" formControlName="base" type="text">
 
   <label for="target">Target Currency:</label>
   <input id="target" formControlName="target" type="text">
 
-  <button type="submit">Get Exchange Rate</button>
+  <label for="amount">Amount:</label>
+  <input id="amount" formControlName="amount" type="number">
+
+  <button type="submit">Convert Amount</button>
 </form>
 
 <div *ngIf="currencyData$ | async as currencyData">
-    <p *ngIf="currencyData?.data?.[currencyForm.get('target')?.value]">
-        Exchange Rate: {{ currencyData.data[currencyForm.get('target')?.value].value }}</p>
-    <p *ngIf="!currencyData?.data?.[currencyForm.get('target')?.value]">
-        Exchange rate data is not available.</p>
-    </div>
+  <p *ngIf="currencyData?.data?.[currencyForm.get('target')?.value]">
+    Exchange Rate: {{ currencyData.data[currencyForm.get('target')?.value].value }}
+  </p>
+  <p *ngIf="!currencyData?.data?.[currencyForm.get('target')?.value]">
+    Exchange rate data is not available.
+  </p>
+</div>
+
+<div *ngIf="convertedAmount !== null">
+  <p>Converted Amount: {{ convertedAmount }}</p>
+</div>
