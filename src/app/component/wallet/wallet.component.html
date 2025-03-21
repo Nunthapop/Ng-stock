@@ -1,1 +1,18 @@
-<p>wallet works!</p>
+<h1>Exchange Rate</h1>
+
+<form [formGroup]="currencyForm" (ngSubmit)="getCurrency()">
+  <label for="base">Base Currency:</label>
+  <input id="base" formControlName="base" type="text">
+
+  <label for="target">Target Currency:</label>
+  <input id="target" formControlName="target" type="text">
+
+  <button type="submit">Get Exchange Rate</button>
+</form>
+
+<div *ngIf="currencyData$ | async as currencyData">
+    <p *ngIf="currencyData?.data?.[currencyForm.get('target')?.value]">
+        Exchange Rate: {{ currencyData.data[currencyForm.get('target')?.value].value }}</p>
+    <p *ngIf="!currencyData?.data?.[currencyForm.get('target')?.value]">
+        Exchange rate data is not available.</p>
+    </div>
