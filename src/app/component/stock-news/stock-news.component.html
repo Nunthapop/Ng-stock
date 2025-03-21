@@ -1,6 +1,72 @@
+<div
+  class="flex flex-column align-items-center justify-content-start p-4 flex-wrap mt-2"
+>
+  <div class="flex flex-row gap-2 justify-content-start w-full align-items-baseline"> 
+    <h3>Stock News</h3>
+    <input
+      type="text"
+      placeholder="Search news..."
+      pInputText
+      [formControl]="searchQuery"
+      class="p-inputtext p-component mb-4"
+    />
+   
+    
+  </div>
+
+  <p-dataview [value]="filteredNewsList" [rows]="5" [paginator]="true">
+    <ng-template #list let-items>
+      <div class="grid grid-cols-12 gap-1 grid-nogutter">
+        <div
+          class="col-span-12"
+          *ngFor="let news of items; let first = first"
+          class="col-span-12 border-top-2 border-300 p-4 w-full h-auto max-h-full"
+        >
+          <div
+            class="flex flex-col sm:flex-row sm:items-center gap-4"
+            [ngClass]="{
+              'border-t border-surface-200 dark:border-surface-700': !first
+            }"
+          >
+            <div class="md:w-40 relative">
+              <img
+                class="block xl:block mx-auto border-round-lg w-full"
+                *ngIf="news.urlToImage"
+                [src]="news.urlToImage"
+                alt="News Image"
+                style="max-width: 150px;" 
+              />
+            </div>
+            <div
+              class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6"
+            >
+              <div
+                class="flex flex-row md:flex-col justify-between items-start gap-2"
+              >
+                <div>
+                  <h3 class="m-0">{{ news.title }}</h3>
+                  <p>{{ news.description }}</p>
+                  <a [href]="news.url" target="_blank">Read more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataview>
+
+  <!-- ถ้าไม่มีข่าว -->
+  <ng-template #noNews>
+    <p>No news available</p>
+  </ng-template>
+</div>
+
+<!-- code เดิม -->
+<!-- 
 <h2>Latest Stock News</h2>
 
-<!-- ตรวจสอบว่ามีข่าวหรือไม่ -->
+
 <div *ngIf="newsList && newsList.length > 0; else noNews">
   <div *ngFor="let news of newsList">
     <h3>{{ news.title }}</h3>
@@ -11,7 +77,7 @@
   </div>
 </div>
 
-<!-- ถ้าไม่มีข่าว -->
+
 <ng-template #noNews>
   <p>No news available</p>
-</ng-template>
+</ng-template> -->

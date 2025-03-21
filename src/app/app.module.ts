@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { AsyncPipe } from '@angular/common';
+import { DataViewModule } from 'primeng/dataview';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { AsyncPipe } from '@angular/common';
    ChartAllModule,ButtonModule,
     StockChartAllModule,AppComponent,
     AsyncPipe,TableModule,OrderListModule,ReactiveFormsModule
-    ,CommonModule
+    ,CommonModule,DataViewModule,FormsModule
   ],
   providers: [
       DateTimeService,

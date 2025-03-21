@@ -8,6 +8,8 @@ import { ListboxModule } from 'primeng/listbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { AsyncPipe } from '@angular/common';
+import { DataViewModule } from 'primeng/dataview';
+
 
 @NgModule({
   exports: [ // Export so other modules/components can use these
@@ -15,7 +17,7 @@ import { AsyncPipe } from '@angular/common';
     StockChartAllModule,
     TableModule,
     OrderListModule,
-     ListboxModule,ReactiveFormsModule,InputTextModule,ButtonModule
+     ListboxModule,ReactiveFormsModule,InputTextModule,ButtonModule,DataViewModule
   ],
   providers: [
     DateTimeService,
