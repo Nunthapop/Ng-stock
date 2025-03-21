@@ -3,10 +3,14 @@
 
 <form [formGroup]="currencyForm" (ngSubmit)="onSubmit()">
   <label for="base">Base Currency:</label>
-  <input id="base" formControlName="base" type="text">
+  <select id="base" formControlName="base">
+    <option *ngFor="let currency of currencies" [value]="currency.code">{{ currency.code }} - {{ currency.name }}</option>
+  </select>
 
   <label for="target">Target Currency:</label>
-  <input id="target" formControlName="target" type="text">
+  <select id="target" formControlName="target">
+    <option *ngFor="let currency of currencies" [value]="currency.code">{{ currency.code }} - {{ currency.name }}</option>
+  </select>
 
   <label for="amount">Amount:</label>
   <input id="amount" formControlName="amount" type="number">

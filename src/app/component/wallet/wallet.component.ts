@@ -4,6 +4,7 @@ import { CurrencyService } from '../../services/currency.service'; // Import the
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms'; // Import ReactiveFormsModule and FormBuilder
+import { currencies } from './currencies';
 
 @Component({
   selector: 'app-wallet',
@@ -17,6 +18,8 @@ export class WalletComponent {
   currencyForm: FormGroup;
   convertedAmount: number | null = null;
   exchangeRate: number | null = null;
+  currencies = currencies; // Assign the imported currencies array
+
 
   constructor(private currencyService: CurrencyService, private fb: FormBuilder) { // Inject FormBuilder
     this.currencyForm = this.fb.group({
