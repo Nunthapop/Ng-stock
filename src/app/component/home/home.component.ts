@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
 
     this.filteredData$ = this.recommendForm.get('text')!.valueChanges.pipe(
       startWith(''),
-      debounceTime(300),
+      debounceTime(300),// Add debounce time to reduce the number of filter calls
       map(text => this.filterData(text))
     );
     const storedWhitelist = this.localstorageService.get();

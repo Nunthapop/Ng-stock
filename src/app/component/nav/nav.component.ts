@@ -30,13 +30,13 @@ export class NavComponent implements OnInit {
         routerLink: '/app-chart',
       },
       {
-        label: 'Wallet',
+        label: 'Exchange',
         icon: 'pi pi-wallet',
         routerLink: '/app-wallet',
       },
       {
         label: 'News',
-        icon: 'pi pi-wallet',
+        icon: 'pi pi-book',
         routerLink: '/app-stock-news',
       },
     ];
