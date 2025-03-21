@@ -1,6 +1,5 @@
 <!-- src/app/component/chart/chart.component.html -->
-<app-search (searchResult)="onSearch($event)"></app-search> <!-- รับข้อมูลการค้นหา -->
-
+<app-search class=""  (searchResult)="onSearch($event)"></app-search> <!-- รับข้อมูลการค้นหา -->
 <span>
   <div class="box">
     <ejs-stockchart id="chart-container" [title]="title" [primaryXAxis]="primaryXAxis" [primaryYAxis]="primaryYAxis" [crosshair]="crosshair" [theme]="theme">
