@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
-import { CurrencyService } from '../../services/currency.service'; // Import the service
+import { CurrencyService } from '../../services/currency/currency.service'; // Import the service
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms'; // Import ReactiveFormsModule and FormBuilder

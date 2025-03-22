@@ -3,6 +3,7 @@ import { ChartComponent } from './component/chart/chart.component';
 import { HomeComponent } from './component/home/home.component';
 import { WalletComponent } from './component/wallet/wallet.component';
 import { StockNewsComponent } from './component/stock-news/stock-news.component';
+import { ContactComponent } from './component/contact/contact.component';
 
 export const routes: Routes = [
 
@@ -23,5 +24,9 @@ export const routes: Routes = [
     {
         path: 'app-wallet',
         component: WalletComponent
+    },
+    {
+        path: 'app-contact',
+        component: ContactComponent
     }
 ];

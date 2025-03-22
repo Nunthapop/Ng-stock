@@ -39,6 +39,11 @@ export class NavComponent implements OnInit {
         icon: 'pi pi-book',
         routerLink: '/app-stock-news',
       },
+      {
+        label: 'Contact us',
+        icon: 'pi pi-phone',
+        routerLink: '/app-contact',
+      },
     ];
   }
   

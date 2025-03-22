@@ -1,13 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
-import { SharedModule } from '../../shared/shared.module';
-import { PolygonService } from '../../services/polygon.service';
-import { data } from '../../models/stock-data.model';
-import { OrderListModule } from 'primeng/orderlist';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Observable, of } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { startWith, map, debounceTime } from 'rxjs/operators';
-import { LocalstorageService } from '../../services/localstorage.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { OrderListModule } from 'primeng/orderlist';
+import { Observable } from 'rxjs';
+import { debounceTime, map, startWith } from 'rxjs/operators';
+import { data } from '../../models/stock-data.model';
+import { LocalstorageService } from '../../services/localstorage/localstorage.service';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-home',

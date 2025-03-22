@@ -1,11 +1,9 @@
 // src/app/component/chart/chart.component.ts
 import { Component, OnInit } from '@angular/core';
-import { StockData } from '../../models/stock-data.model';
-import { PolygonService } from '../../services/polygon.service';
-import { ChartAllModule, StockChartAllModule } from '@syncfusion/ej2-angular-charts';
-import { DateTimeService, LegendService, TooltipService } from '@syncfusion/ej2-angular-charts';
-import { DataLabelService, CandleSeriesService } from '@syncfusion/ej2-angular-charts';
+import { CandleSeriesService, ChartAllModule, DataLabelService, DateTimeService, LegendService, StockChartAllModule, TooltipService } from '@syncfusion/ej2-angular-charts';
 import { CardModule } from 'primeng/card';
+import { StockData } from '../../models/stock-data.model';
+import { PolygonService } from '../../services/chart/polygon.service';
 import { SearchComponent } from '../search/search.component';
 
 @Component({

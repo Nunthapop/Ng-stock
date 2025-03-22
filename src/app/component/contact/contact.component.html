@@ -1,0 +1,64 @@
+<header>
+    <h1>About NG - STOCK</h1>
+    <p>ยินดีต้อนรับสู่เว็บไซต์เกี่ยวกับหุ้นและข้อมูลการเงิน</p>
+  </header>
+  
+  <div class="container">
+    <section>
+      <h2>เกี่ยวกับเว็บไซต์</h2>
+      <p>
+        เว็บไซต์นี้สร้างขึ้นเพื่อให้ข้อมูลเกี่ยวกับตลาดหุ้น, กราฟราคาหุ้น, และข้อมูลทางการเงินอื่นๆ ที่เกี่ยวข้อง 
+        โดยเน้นการนำเสนอข้อมูลที่ถูกต้องและทันสมัย พร้อมทั้งคำนวณอัตราแลกเปลี่ยนและรวบรวมข่าวสารล่าสุด 
+        เพื่อช่วยให้คุณตัดสินใจลงทุนได้อย่างมีประสิทธิภาพ
+      </p>
+    </section>
+  
+    <section class="features">
+      <h2>ฟีเจอร์หลักของเว็บไซต์</h2>
+      <ul>
+        <li><strong>กราฟหุ้น:</strong> แสดงกราฟราคาหุ้นแบบ delay 1 วัน พร้อมการคำนวณ Indicator ต่างๆ</li>
+        <li><strong>อัตราแลกเปลี่ยน:</strong> คำนวณอัตราแลกเปลี่ยนสกุลเงินหลักแบบ Real-time</li>
+        <li><strong>ข่าวสารการเงิน:</strong> รวบรวมข่าวสารล่าสุดเกี่ยวกับตลาดหุ้นและเศรษฐกิจ</li>
+      </ul>
+    </section>
+  
+    <section>
+      <p>
+        หากมีคำถามหรือข้อเสนอแนะใดๆ สามารถติดต่อผมได้ฟอร็มด้านล่างนี้ 
+      </p>
+      <button (click)="toggleContactForm()">ติดต่อเรา</button>
+      <form *ngIf="showContactForm" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="name">ชื่อ:</label>
+          <input id="name" type="text" formControlName="name" placeholder="กรอกชื่อของคุณ">
+        </div>
+        <div>
+          <label for="email">อีเมล:</label>
+          <input id="email" type="email" formControlName="email" placeholder="กรอกอีเมลของคุณ">
+        </div>
+        <div>
+          <label for="message">ข้อความ:</label>
+          <textarea id="message" formControlName="message" placeholder="กรอกข้อความของคุณ"></textarea>
+        </div>
+        <button type="submit">ส่งข้อความ</button>
+      </form>
+    </section>
+  
+    <section>
+      <h2>ให้คะแนนเว็บไซต์</h2>
+      <button (click)="toggleReviewForm()">ให้คะแนน</button>
+      <form *ngIf="showReviewForm" [formGroup]="reviewForm" (ngSubmit)="onReviewSubmit()">
+        <div>
+          <label for="rating">คะแนน:</label>
+          <select id="rating" formControlName="rating">
+            <option *ngFor="let rating of ratings" [value]="rating">{{ rating }}</option>
+          </select>
+        </div>
+        <button type="submit">ส่งคะแนน</button>
+      </form>
+    </section>
+  </div>
+  
+  <footer>
+    <p>&copy; 2024 เว็บไซต์เกี่ยวกับหุ้นและข้อมูลการเงิน</p>
+  </footer>

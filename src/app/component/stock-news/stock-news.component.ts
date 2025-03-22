@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { StockNewsService } from '../../services/stock-news.service';
+import { StockNewsService } from '../../services/stock/stock-news.service';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
