@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms'; // Import ReactiveFormsModule and FormBuilder
 import { currencies } from './currencies';
+import { SelectModule } from 'primeng/select';
 
 @Component({
   selector: 'app-wallet',
-  imports: [SharedModule, CommonModule, ReactiveFormsModule], // Add ReactiveFormsModule to imports
+  imports: [SharedModule, CommonModule, ReactiveFormsModule,SelectModule], // Add ReactiveFormsModule to imports
   templateUrl: './wallet.component.html',
   styleUrl: './wallet.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
