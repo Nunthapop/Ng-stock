@@ -1,12 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule], // นำเข้า HttpClientModule
+  imports: [CommonModule, ReactiveFormsModule,SharedModule], // นำเข้า HttpClientModule
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })

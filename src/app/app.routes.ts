@@ -6,9 +6,17 @@ import { StockNewsComponent } from './component/stock-news/stock-news.component'
 import { ContactComponent } from './component/contact/contact.component';
 
 export const routes: Routes = [
+
         
     { path: 'chart/:symbol', component: ChartComponent },   
   
+
+    {
+        path: '',
+        redirectTo: '/app-home',
+        pathMatch: 'full'
+    },
+
     {
         path: 'app-chart',
         component: ChartComponent

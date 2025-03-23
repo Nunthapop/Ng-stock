@@ -77,8 +77,10 @@ export class HomeComponent implements OnInit {
   isInWhitelist(stock: data): boolean {
     return this.whitelist.some(item => item.Symbol === stock.Symbol);
   }
+  //return True ไปทำให้ [disabled]="isInWhitelist(data)"เป็นจริง
 
-  addToWhitelist(stock: data): void {
+  addToWhitelist(stock: any): void {
+    //ถ้าไม่ใช่ให้ add
     if (!this.isInWhitelist(stock)) {
       this.whitelist = [...this.whitelist, stock];
       this.localstorageService.set(this.whitelist.map(item => ({ name: item.Symbol, tels: [] })));

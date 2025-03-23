@@ -1,7 +1,7 @@
 <div class="flex flex-column align-items-center justify-center">
   <i class="pi pi-euro mt-3" style="font-size: 3rem"></i>
   <h1>EXCHANGE RATE</h1>
-  <!-- <p>300 limit request</p> -->
+  <h3 class="font-light">The exchange rate is the value of one currency compared to another. It determines how much of one currency you can exchange for another </h3>
 
 
   <form
@@ -12,7 +12,7 @@
     <span class="flex justify-content-between align-items-center">
       <p class="mr-5">
         <label for="amount">Amount:</label> <br>
-        <input pInputText id="amount" formControlName="amount" type="number" />
+        <input pInputText id="amount" min="0" formControlName="amount" type="number" />
       </p>
       <p class="mr-5">
         <label for="base">From :</label>
@@ -36,6 +36,7 @@
       </p>
       <p>
         <label for="target">TO :</label>
+        <!-- data form currencies.ts -->
         <p-select
           [options]="currencies"
           formControlName="target"
