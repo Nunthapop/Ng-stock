@@ -43,6 +43,9 @@ justify-content-start  p-4  flex-wrap mt-2">
               <td>
                 <p-button type="button" (click)="addToWhitelist(data)" [disabled]="isInWhitelist(data)" styleClass="p-button-success" label="Add"></p-button>
               </td>
+              <!-- สถานะปิดการใช้งาน: แอตทริบิวต์ [disabled]="isInWhitelist(data)" 
+               กำหนดสถานะปิดการใช้งานของปุ่มแบบไดนามิก โดยใช้การผูกคุณสมบัติของ Angular เพื่อประเมินเมธอด isInWhitelist(data) 
+               หากเมธอดนี้คืนค่า true ซึ่งหมายความว่าข้อมูลหุ้นนี้อยู่ในรายการโปรดแล้ว ปุ่มจะถูกปิดการใช้งานเพื่อป้องกันการเพิ่มรายการซ้ำ -->
             </tr>
           </ng-template>
         </p-table>

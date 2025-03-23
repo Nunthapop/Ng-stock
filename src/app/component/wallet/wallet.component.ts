@@ -33,6 +33,7 @@ export class WalletComponent {
   onSubmit() {
     const { base, target, amount } = this.currencyForm.value;
     this.currencyData$ = this.currencyService.getCurrency(base, target); // Use the service with form values
+    // Subscribe to the observable to get the data
     this.currencyData$.subscribe(currencyData => {
       if (currencyData && currencyData.data && currencyData.data[target]) {
         this.exchangeRate = currencyData.data[target].value;
