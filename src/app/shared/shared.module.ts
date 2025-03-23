@@ -9,6 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { AsyncPipe } from '@angular/common';
 import { DataViewModule } from 'primeng/dataview';
+import { FieldsetModule } from 'primeng/fieldset';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DataViewModule } from 'primeng/dataview';
     StockChartAllModule,
     TableModule,
     OrderListModule,
-     ListboxModule,ReactiveFormsModule,InputTextModule,ButtonModule,DataViewModule
+     ListboxModule,ReactiveFormsModule,InputTextModule,ButtonModule,
+     DataViewModule,FieldsetModule
   ],
   providers: [
     DateTimeService,
