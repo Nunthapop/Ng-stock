@@ -7,13 +7,13 @@ import { debounceTime, map, startWith } from 'rxjs/operators';
 import { data } from '../../models/stock-data.model';
 import { LocalstorageService } from '../../services/localstorage/localstorage.service';
 import { SharedModule } from '../../shared/shared.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   imports: [SharedModule, OrderListModule, ReactiveFormsModule, AsyncPipe],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
-
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   data: data[] = [];
@@ -23,14 +23,16 @@ export class HomeComponent implements OnInit {
   filteredWhitelist$!: Observable<data[]>;
   whitelist: data[] = [];
 
-  constructor(private fb: FormBuilder, private localstorageService: LocalstorageService) { }
+  constructor(
+    private fb: FormBuilder,
+    private localstorageService: LocalstorageService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.recommendForm = this.fb.group({
       text: ['']
     });
-
-   
 
     this.data = [
       { Symbol: 'AAPL', price: '$192.53', volume: 48752630, Change: '+1.27%', total: 3022451890, category: 'Technology' },
@@ -47,9 +49,10 @@ export class HomeComponent implements OnInit {
 
     this.filteredData$ = this.recommendForm.get('text')!.valueChanges.pipe(
       startWith(''),
-      debounceTime(300),// Add debounce time to reduce the number of filter calls
+      debounceTime(300),
       map(text => this.filterData(text))
     );
+
     const storedWhitelist = this.localstorageService.get();
     if (storedWhitelist) {
       this.whitelist = storedWhitelist.map(item => ({
@@ -61,15 +64,11 @@ export class HomeComponent implements OnInit {
         category: ''
       }));
     }
-   
   }
-
 
   filterData(text: string): data[] {
     return this.data.filter(item => item.Symbol.toLowerCase().includes(text.toLowerCase()));
   }
-
-
 
   onSubmit(): void {
     // Handle form submission
@@ -79,7 +78,7 @@ export class HomeComponent implements OnInit {
     return this.whitelist.some(item => item.Symbol === stock.Symbol);
   }
 
-  addToWhitelist(stock: any): void {
+  addToWhitelist(stock: data): void {
     if (!this.isInWhitelist(stock)) {
       this.whitelist = [...this.whitelist, stock];
       this.localstorageService.set(this.whitelist.map(item => ({ name: item.Symbol, tels: [] })));
@@ -89,5 +88,9 @@ export class HomeComponent implements OnInit {
   removeFromWhitelist(stock: data): void {
     this.whitelist = this.whitelist.filter(item => item.Symbol !== stock.Symbol);
     this.localstorageService.set(this.whitelist.map(item => ({ name: item.Symbol, tels: [] })));
+  }
+
+  openChart(symbol: string): void {
+    this.router.navigate(['/chart', symbol]); // นำทางไปที่ /chart/SYMBOL
   }
 }

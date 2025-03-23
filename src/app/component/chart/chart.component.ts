@@ -1,5 +1,5 @@
-// src/app/component/chart/chart.component.ts
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';  // ✅ เพิ่ม ActivatedRoute
 import { CandleSeriesService, ChartAllModule, DataLabelService, DateTimeService, LegendService, StockChartAllModule, TooltipService } from '@syncfusion/ej2-angular-charts';
 import { CardModule } from 'primeng/card';
 import { StockData } from '../../models/stock-data.model';
@@ -16,13 +16,15 @@ import { SearchComponent } from '../search/search.component';
 })
 export class ChartComponent implements OnInit {
   public chartData: StockData[] = [];
-  title = 'AAPL STOCK';
+  title = 'Loading...';
   public primaryXAxis?: Object;
   public primaryYAxis?: Object;
   public crosshair?: Object;
   theme?: string;
+  symbol: string = ''; // ✅ เก็บค่า symbol จาก URL
+  isLoading: boolean = false; // สถานะการโหลดข้อมูล
 
-  constructor(private polygonService: PolygonService) {
+  constructor(private route: ActivatedRoute, private polygonService: PolygonService) {
     this.primaryXAxis = {
       valueType: 'DateTime',
       crosshairTooltip: { enable: true },
@@ -38,31 +40,36 @@ export class ChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // เรียกใช้ API เพื่อดึงข้อมูลหุ้น
-    this.polygonService
-      .getStockData('AAPL', 1, 'day') // ตัวอย่าง: ticker='AAPL', range=1, timespan='day'
-      .subscribe({
-        next: (data) => {
-          this.chartData = data; // อัปเดตข้อมูลใน chartData
-          this.title = 'AAPL STOCK'; // อัปเดต title
-        },
-        error: (err) => {
-          console.error('Error fetching stock data:', err);
-        },
-      });
+    // ✅ อ่านค่า symbol จาก URL
+    this.route.paramMap.subscribe(params => {
+      this.symbol = params.get('symbol') || 'AAPL'; // ถ้าไม่มีค่าให้ default เป็น 'AAPL'
+      this.onSearch(this.symbol); // ✅ โหลดข้อมูลหุ้นตาม symbol
+    });
   }
+
   onSearch(ticker: string) {
     this.polygonService.getStockData(ticker, 1, 'day').subscribe({
       next: (data) => {
-        this.chartData = [...data];
-        setTimeout(() => {
-          this.title = `${ticker} STOCK`;
-        });
+        if (data && Array.isArray(data)) {
+          this.chartData = [...data];
+          setTimeout(() => {
+            this.title = `${ticker} STOCK`;
+          });
+        } else {
+          console.error('Invalid data format:', data);
+          this.title = 'Error: Invalid data format';
+        }
       },
       error: (err) => {
-        console.error('Error fetching stock data:', err);
+        if (err.status === 429) {
+          // Handle 429 Rate Limit Error
+          console.error('Rate limit exceeded. Please try again later.');
+          this.title = 'Rate limit exceeded. Please try again later.';
+        } else {
+          console.error('Error fetching stock data:', err);
+          this.title = 'Error fetching data';
+        }
       },
     });
-  }  
-
+  }
 }
